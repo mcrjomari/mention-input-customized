@@ -195,6 +195,7 @@ export class Editor extends React.Component {
           `i`
         );
       }
+
       const str = inputText.substr(this.menIndex);
       const keywordArray = str.match(pattern);
       if (keywordArray && !!keywordArray.length) {
@@ -633,6 +634,7 @@ export class Editor extends React.Component {
           onLayout={event => this.onMainContainerLayout(event)}
         >
           <ScrollView
+            nestedScrollEnabled={true}
             ref={scroll => {
               this.scroll = scroll;
             }}
@@ -704,6 +706,8 @@ export class Editor extends React.Component {
                   this.onContentSizeChange(nativeEvent);
                   //  }
                 }}
+                blurOnSubmit={false}
+                scrollEnabled={false}
                 onFocus={({ nativeEvent }) => {
                   //   if(Platform.OS === "ios"){
 
@@ -724,6 +728,9 @@ export class Editor extends React.Component {
                   this.setTempEditorHeight();
                   //     }
                 }}
+                scrollEnabled={false}
+                hideKeyboardAccessoryView={true}
+                autoCorrect={false}
               />
             </View>
           </ScrollView>
